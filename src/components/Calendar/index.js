@@ -33,7 +33,6 @@ function mapStateToProps({ calendar }, { mealOrders }) {
 // Component
 class Calendar extends Component {
   render() {
-    console.log(this.props)
     const { mealOrders, calendar } = this.props;
 
     return (
