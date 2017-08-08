@@ -14,7 +14,7 @@ export default function FoodList({ foodList, onSelect}) {
   return (
     <ul className="food-list">
       { foodList.map((food, i) => (
-        <li key={i}>
+        <li key={food.label}>
           <h3>{trim(food.label)}</h3>
           <img src={food.image} alt={food.label} />
           <div>{Math.floor(food.calories)} Calories</div>
