@@ -13,12 +13,12 @@ export default function FoodList({ foodList, onSelect}) {
 
   return (
     <ul className="food-list">
-      { foodList.map((item, i) => (
+      { foodList.map((food, i) => (
         <li key={i}>
-          <h3>{trim(item.label)}</h3>
-          <img src={item.image} alt={item.label} />
-          <div>{Math.floor(item.calories)} Calories</div>
-          <div>{item.source}</div>
+          <h3>{trim(food.label)}</h3>
+          <img src={food.image} alt={food.label} />
+          <div>{Math.floor(food.calories)} Calories</div>
+          <div>{food.source}</div>
         </li>
       ))}
     </ul>
