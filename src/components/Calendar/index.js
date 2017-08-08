@@ -5,6 +5,7 @@ import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
 
 // Our Dependencies
 import { fetchRecipes } from '../../utils/api';
+import { capitalize } from '../../utils/helpers';
 
 // Our Components
 import FoodModal from './FoodModal';
@@ -73,7 +74,7 @@ class Calendar extends Component {
       this.setState({ food, isLoadingFood: false });
     })
   }
-  
+
   render() {
     const { isLoadingFood, isFoodModalOpen, meal, day, food } = this.state;
     const { mealOrders, calendar } = this.props;
@@ -84,7 +85,7 @@ class Calendar extends Component {
           <div className="days">
             { calendar.map(({ day }) => 
               <h3 key={day} className="subheader">
-                {day}
+                {capitalize(day)}
               </h3>
             )}
           </div>

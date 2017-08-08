@@ -5,6 +5,9 @@ import Loading from 'react-loading'
 import Modal from 'react-modal';
 import ArrowRightIcon from 'react-icons/lib/fa/arrow-circle-right';
 
+// Our Dependencies
+import { capitalize } from '../../../utils/helpers'
+
 // Our Components 
 import FoodList from './FoodList';
 
@@ -43,7 +46,7 @@ class FoodModal extends Component {
             ? <Loading delay={200} type="bubbles" color="#222" className="loading"/>
             : <div className="search-container">
                 <h3 className="subheader">
-                  Find a meal for {day} {meal}
+                  Find a meal for {capitalize(day)} ({meal})
                 </h3>
                 <div className="search">
                   <input

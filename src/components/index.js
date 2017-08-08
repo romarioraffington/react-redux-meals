@@ -1,6 +1,9 @@
 // External Dependencies
 import React, { Component } from 'react';
 
+// Our Dependencies
+import { capitalize } from '../utils/helpers'
+
 // Components
 import Calendar from './Calendar';
 
@@ -16,7 +19,7 @@ export default class App extends Component {
         <ul className="meal-types">
           { mealOrders.map(meal => (
             <li key={meal} className="subheader">
-              {meal}
+              {capitalize(meal)}
             </li>
           ))}
         </ul>
