@@ -21,7 +21,6 @@ function mapStateToProps({ calendar }, { mealOrders }) {
     'friday',
     'saturday'
   ];
-
   return {
     mealOrders,
 
@@ -43,7 +42,7 @@ class Calendar extends Component {
   state = {
     meal: null,
     day: null,
-    food: null,
+    foodList: null,
     isLoadingFood: false,
     isFoodModalOpen: false,
     ingredientsModalOpen: false,
@@ -62,7 +61,7 @@ class Calendar extends Component {
       isFoodModalOpen: false,
       meal: null,
       day: null,
-      food: null,
+      foodList: null,
     }))
   }
 
@@ -70,13 +69,13 @@ class Calendar extends Component {
     if (!value) return;
     this.setState({ isLoadingFood: true });
 
-    fetchRecipes(value).then(food => {
-      this.setState({ food, isLoadingFood: false });
+    fetchRecipes(value).then(foodList => {
+      this.setState({ foodList, isLoadingFood: false });
     })
   }
 
   render() {
-    const { isLoadingFood, isFoodModalOpen, meal, day, food } = this.state;
+    const { isLoadingFood, isFoodModalOpen, meal, day, foodList } = this.state;
     const { mealOrders, calendar } = this.props;
 
     return (
@@ -112,7 +111,7 @@ class Calendar extends Component {
         <FoodModal 
           meal={meal} 
           day={day}
-          food={food}
+          foodList={foodList}
           isLoadingFood={isLoadingFood}
           isFoodModalOpen={isFoodModalOpen}
           searchFood={this.searchFood}

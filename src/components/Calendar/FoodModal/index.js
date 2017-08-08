@@ -15,7 +15,7 @@ class FoodModal extends Component {
   static propTypes = {
     meal: PropTypes.string,
     day: PropTypes.string,
-    food: PropTypes.array,
+    foodList: PropTypes.array,
     isLoadingFood: PropTypes.bool.isRequired,
     isFoodModalOpen: PropTypes.bool.isRequired,
     closeFoodModal: PropTypes.func.isRequired,
@@ -28,7 +28,7 @@ class FoodModal extends Component {
       isFoodModalOpen, 
       closeFoodModal, 
       searchFood,
-      food,
+      foodList,
       meal, 
       day 
     } = this.props;
@@ -61,9 +61,9 @@ class FoodModal extends Component {
                       <ArrowRightIcon size={30} />
                   </button>
                 </div>
-                { food !== null && (
+                { foodList !== null && (
                   <FoodList 
-                    food={food}
+                    foodList={foodList}
                     onSelect={ recipe => {
                       closeFoodModal()
                     }}
