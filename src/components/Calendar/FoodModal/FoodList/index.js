@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Our Dependencies
-import { trim } from '../../utils/helpers';
+import { trim } from '../../../../utils/helpers';
 
 export default function FoodList({ food, onSelect}) {
   if (food.length === 0) {
@@ -13,14 +13,14 @@ export default function FoodList({ food, onSelect}) {
 
   return (
     <ul className="food-list">
-      { food.map(item => {
-        <li>
+      { food.map((item, i) => (
+        <li key={i}>
           <h3>{trim(item.label)}</h3>
           <img src={item.image} alt={item.label} />
           <div>{Math.floor(item.calories)} Calories</div>
           <div>{item.source}</div>
         </li>
-      })}
+      ))}
     </ul>
   )
 }

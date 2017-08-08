@@ -1,6 +1,6 @@
 import {
   ADD_RECIPE,
-} from '../../actions/constants';
+} from '../../../../actions/constants';
 
 export default function food(state = {}, action) {
   switch (action.type) {
