@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
 
+// Our Dependencies
+import { fetchRecipes } from '../../utils/api';
+
 // Our Components
 import FoodModal from './FoodModal';
 
@@ -40,14 +43,14 @@ class Calendar extends Component {
     meal: null,
     day: null,
     food: null,
-    loadingFood: false,
-    foodModalOpen: false,
+    isLoadingFood: false,
+    isFoodModalOpen: false,
     ingredientsModalOpen: false,
   }
 
   openFoodModal = ({ meal, day }) => {
     this.setState(() => ({
-      foodModalOpen: true,
+      isFoodModalOpen: true,
       meal,
       day,
     }))
@@ -55,16 +58,24 @@ class Calendar extends Component {
 
   closeFoodModal = () => {
     this.setState(() => ({
-      foodModalOpen: false,
+      isFoodModalOpen: false,
       meal: null,
       day: null,
       food: null,
     }))
   }
 
+  searchFood = (value) => {
+    if (!value) return;
+    this.setState({ isLoadingFood: true });
 
+    fetchRecipes(value).then(food => {
+      this.setState({ food, isLoadingFood: false });
+    })
+  }
+  
   render() {
-    const { loadingFood, meal, day } = this.state;
+    const { isLoadingFood, isFoodModalOpen, meal, day, food } = this.state;
     const { mealOrders, calendar } = this.props;
 
     return (
@@ -100,8 +111,10 @@ class Calendar extends Component {
         <FoodModal 
           meal={meal} 
           day={day}
-          loadingFood={loadingFood}
-          foodModalOpen={this.foodModalOpen}
+          food={food}
+          isLoadingFood={isLoadingFood}
+          isFoodModalOpen={isFoodModalOpen}
+          searchFood={this.searchFood}
           closeFoodModal={this.closeFoodModal}
         />
       </div>
