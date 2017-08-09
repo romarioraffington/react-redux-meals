@@ -14,7 +14,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <div className="nav">
-          <h1 className="header">UdaciMeals</h1>
+          <h1 className="header">React Meals</h1>
         </div>
         <ul className="meal-types">
           { mealOrders.map(meal => (
