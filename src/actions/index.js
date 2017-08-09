@@ -1,12 +1,12 @@
 import {
   ADD_RECIPE,
   REMOVE_FROM_CALENDAR
-} from '../constants';
+} from './constants';
 
-export function addRecipe ({ day, recipe, meal }) {
+export function addRecipe ({ food, day, meal }) {
   return {
     type: ADD_RECIPE,
-    recipe,
+    food,
     day,
     meal,
   }

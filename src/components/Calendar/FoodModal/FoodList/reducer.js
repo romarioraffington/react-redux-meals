@@ -5,10 +5,10 @@ import {
 export default function food(state = {}, action) {
   switch (action.type) {
     case ADD_RECIPE:
-      const { recipe } = action;
+      const { food } = action;
       return {
         ...state,
-        [recipe.label]: recipe,
+        [food.label]: food,
       }
     default:
       return state;
