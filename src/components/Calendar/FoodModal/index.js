@@ -16,6 +16,7 @@ class FoodModal extends Component {
     meal: PropTypes.string,
     day: PropTypes.string,
     foodList: PropTypes.array,
+    selectRecipe: PropTypes.func.isRequired,
     isLoadingFood: PropTypes.bool.isRequired,
     isFoodModalOpen: PropTypes.bool.isRequired,
     closeFoodModal: PropTypes.func.isRequired,
@@ -28,6 +29,7 @@ class FoodModal extends Component {
       isFoodModalOpen, 
       closeFoodModal, 
       searchFood,
+      selectRecipe,
       foodList,
       meal, 
       day 
@@ -64,8 +66,9 @@ class FoodModal extends Component {
                 { foodList !== null && (
                   <FoodList 
                     foodList={foodList}
-                    onSelect={ recipe => {
-                      closeFoodModal()
+                    onSelect={food => {
+                      selectRecipe({ food, day, meal }) 
+                      closeFoodModal();
                     }}
                   />
                 )}

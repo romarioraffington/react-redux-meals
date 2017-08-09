@@ -6,12 +6,14 @@ import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
 // Our Dependencies
 import { fetchRecipes } from '../../utils/api';
 import { capitalize } from '../../utils/helpers';
+import { addRecipe } from '../../actions';
 
 // Our Components
 import FoodModal from './FoodModal';
 
 // Redux
-function mapStateToProps({ calendar }, { mealOrders }) {
+function mapStateToProps({ food, calendar }, { mealOrders }) {
+  
   const days = [
     'sunday',
     'monday',
@@ -29,12 +31,16 @@ function mapStateToProps({ calendar }, { mealOrders }) {
     calendar: days.map(day => ({
       day,
       meals: Object.keys(calendar[day]).reduce((meals, meal) => {
-        meals[meal] = calendar[day][meal] || null;
+        meals[meal] = food[calendar[day][meal]] || null;
         return meals;
       }, {})
     }))
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  selectRecipe: (data) => dispatch(addRecipe(data)),
+})
 
 // Component
 class Calendar extends Component {
@@ -76,7 +82,7 @@ class Calendar extends Component {
 
   render() {
     const { isLoadingFood, isFoodModalOpen, meal, day, foodList } = this.state;
-    const { mealOrders, calendar } = this.props;
+    const { mealOrders, calendar, selectRecipe } = this.props;
 
     return (
       <div>
@@ -115,6 +121,7 @@ class Calendar extends Component {
           isLoadingFood={isLoadingFood}
           isFoodModalOpen={isFoodModalOpen}
           searchFood={this.searchFood}
+          selectRecipe={selectRecipe}
           closeFoodModal={this.closeFoodModal}
         />
       </div>
@@ -122,4 +129,7 @@ class Calendar extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Calendar)
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps,
+)(Calendar)
