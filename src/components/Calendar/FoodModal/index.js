@@ -16,11 +16,11 @@ class FoodModal extends Component {
     meal: PropTypes.string,
     day: PropTypes.string,
     foodList: PropTypes.array,
-    selectRecipe: PropTypes.func.isRequired,
     isLoadingFood: PropTypes.bool.isRequired,
     isFoodModalOpen: PropTypes.bool.isRequired,
-    closeFoodModal: PropTypes.func.isRequired,
     searchFood: PropTypes.func.isRequired,
+    selectRecipe: PropTypes.func.isRequired,
+    closeFoodModal: PropTypes.func.isRequired,
   }
 
   render() {
