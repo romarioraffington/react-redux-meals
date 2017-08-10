@@ -1,10 +1,15 @@
 // External Dependencies
-import { createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 
 // Our Dependencies
 import reducers from './reducers';
+import logger from './utils/logger';
+
+const composeEnhancers = window.__REDUX__DEVTOOLS__EXTENTION__COMPOSE__ || compose
 
 export default createStore (
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(
+    applyMiddleware(logger),
+  ),
 )
