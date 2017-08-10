@@ -42,10 +42,9 @@ li {
 }
 
 .shopping-list {
-  background: none;
-  font-size: 18px;
-  border: none;
-  text-decoration: underline;
+  position: absolute;
+  top: 50px;
+  right: 100px;
   cursor: pointer;
 }
 
