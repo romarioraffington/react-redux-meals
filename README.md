@@ -2,7 +2,7 @@
 
 React Redux Meals is a daily meal-tracking app that allow users to store meals and retrieve the ingredients for all the stored meals. This project was created as a part of the React Redux Module for the Udacity React Nanodegree.
 
-View the live app [here](https://react-redux-meals.herokuapp.com). :cake: 
+View the live app [here](https://react-redux-meal.herokuapp.com/). :cake: 
 
 ## Getting Started
 
